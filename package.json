@@ -1,0 +1,21 @@
+{
+  "name": "rilis",
+  "description": "find the latest releases of your 🖤 singers",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/macarie/solid-rilis.git"
+  },
+  "bugs": {
+    "url": "https://github.com/macarie/solid-rilis/issues"
+  },
+  "homepage": "https://github.com/macarie/solid-rilis#readme",
+  "author": {
+    "name": "Raul Macarie",
+    "email": "raul@macarie.me",
+    "url": "https://macarie.me"
+  },
+  "type": "module"
+}

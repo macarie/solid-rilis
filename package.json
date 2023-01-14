@@ -45,7 +45,8 @@
 		"vite-plugin-solid": "^2.5.0"
 	},
 	"dependencies": {
-		"solid-js": "^1.6.9"
+		"solid-js": "^1.6.9",
+		"zod": "^3.20.2"
 	},
 	"prettier": {
 		"useTabs": true,

@@ -1,0 +1,33 @@
+import { H1, Strong } from "./typography.jsx";
+
+import type { Component } from "solid-js";
+
+export const Loading: Component<{
+	text: string;
+	progress: number;
+	total: number;
+}> = (properties) => (
+	<div class="flex grow flex-col justify-center gap-7 px-8 pb-36 md:px-16 lg:px-36">
+		<H1>{properties.text}</H1>
+		<div class="flex flex-col gap-4">
+			<div class="relative flex h-2 flex-nowrap">
+				<div
+					style={{
+						transform: `scaleX(${properties.progress / properties.total})`,
+					}}
+					class="absolute h-full w-full origin-left bg-neutral-800 transition-transform duration-300 ease-in-out-cubic"
+				/>
+				<div
+					style={{
+						transform: `scaleX(${1 - properties.progress / properties.total})`,
+					}}
+					class="absolute h-full w-full origin-right bg-neutral-400 transition-transform duration-300 ease-in-out-cubic"
+				/>
+			</div>
+			<span class="ml-auto">
+				<Strong>{properties.progress}</Strong>/
+				<Strong>{properties.total}</Strong>
+			</span>
+		</div>
+	</div>
+);

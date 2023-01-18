@@ -1,13 +1,10 @@
 import { Releases } from "./releases.jsx";
 import { Welcome } from "./welcome.jsx";
+import { setToken, token } from "../signals/token.js";
 import { storageWithTTL } from "../utils/storage-with-ttl.js";
-import { createSignal, Match, Switch } from "solid-js";
+import { Match, Switch } from "solid-js";
 
 import type { Component } from "solid-js";
-
-const [token, setToken] = createSignal(
-	storageWithTTL.getItem<string>("token").data,
-);
 
 // @info: Spotify redirects to `#?access_token=...&expires_in=...` after the
 //  user authenticates

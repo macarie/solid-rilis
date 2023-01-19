@@ -8,5 +8,6 @@
 		"jsxImportSource": "solid-js",
 		"noEmit": true,
 		"isolatedModules": true,
+		"noUnusedLocals": true,
 	},
 }

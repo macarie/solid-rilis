@@ -6,7 +6,7 @@ import type { Component } from "solid-js";
 export const Navbar: Component<{
 	user?: Awaited<ReturnType<typeof getMe>>;
 }> = (properties) => (
-	<nav class="mx-auto flex w-full max-w-screen-2xl items-center justify-between px-8 py-4 md:px-16">
+	<nav class="flex items-center justify-between py-4">
 		<a href="/" class="text-2xl font-light">
 			rilis.
 		</a>

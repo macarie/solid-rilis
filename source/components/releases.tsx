@@ -1,3 +1,4 @@
+import { Container } from "./container.jsx";
 import { OhSnap } from "./error.jsx";
 import { Hero } from "./hero.jsx";
 import { Loading } from "./loading.jsx";
@@ -66,7 +67,7 @@ const View: Component<{
 	return (
 		<>
 			<Hero amount={properties.releases.length} />
-			<section class="mx-auto mt-24 mb-20 grid w-full max-w-screen-2xl grid-cols-1 gap-12 px-8 md:px-16 xl:grid-cols-2">
+			<section class="mt-24 mb-20 grid grid-cols-1 gap-12 xl:grid-cols-2">
 				<For each={pages()}>{(release) => <Release release={release} />}</For>
 				<div id="page-end-marker" ref={pageEnd!} />
 			</section>
@@ -100,7 +101,9 @@ export const Releases: Component = () => {
 
 	return (
 		<>
-			<Navbar user={me()} />
+			<Container>
+				<Navbar user={me()} />
+			</Container>
 			<Switch
 				fallback={
 					<Loading text="Loading your 🖤 artists" total={1} progress={0} />
@@ -117,7 +120,9 @@ export const Releases: Component = () => {
 						}
 					>
 						<Match when={releases.state === "ready"}>
-							<View releases={releases()} />
+							<Container>
+								<View releases={releases()} />
+							</Container>
 						</Match>
 						<Match when={releases.state === "errored"}>
 							<OhSnap

@@ -23,7 +23,7 @@ const humanizeNumber = (number: number) => {
 export const Hero: Component<{
 	amount: number;
 }> = (properties) => (
-	<header class="mx-auto mt-12 w-full max-w-screen-2xl px-8 md:px-16">
+	<header class="mt-12">
 		<H1>
 			Holy guacamole, there are at least{" "}
 			<mark class="whitespace-nowrap rounded-2xl bg-teal-50 px-3 py-2 text-teal-600">

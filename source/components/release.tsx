@@ -12,7 +12,7 @@ const getDaysPassedSince = (date: string) =>
 	Math.ceil((Date.parse(date) - Date.now()) / 1000 / 60 / 60 / 24);
 
 const Tag: ParentComponent = (properties) => (
-	<div class="gap-1 rounded-lg bg-neutral-100 py-1 px-2 text-neutral-600">
+	<div class="gap-1 rounded-lg bg-neutral-100 py-1 px-2 text-neutral-600 first-letter:capitalize">
 		{properties.children}
 	</div>
 );

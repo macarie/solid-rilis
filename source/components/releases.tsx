@@ -106,7 +106,11 @@ export const Releases: Component = () => {
 			</Container>
 			<Switch
 				fallback={
-					<Loading text="Loading your 🖤 artists" total={1} progress={0} />
+					<Loading
+						text="Building your 🖤 artists list"
+						total={1}
+						progress={0}
+					/>
 				}
 			>
 				<Match when={followedArtists.state === "ready"}>

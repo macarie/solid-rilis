@@ -5,20 +5,20 @@ import type { Component } from "solid-js";
 
 export const Navbar: Component<{
 	user?: Awaited<ReturnType<typeof getMe>>;
-}> = (properties) => (
+}> = (props) => (
 	<nav class="flex items-center justify-between py-4">
 		<a href="/" class="text-2xl font-light">
 			rilis.
 		</a>
 		<a href="/" class="flex items-center gap-4 text-xl font-light">
-			{properties.user?.display_name ?? "Loading"}
+			{props.user?.display_name ?? "Loading"}
 			<img
-				src={properties.user?.images.at(0)?.url ?? defaultAvatar}
+				src={props.user?.images.at(0)?.url ?? defaultAvatar}
 				class="w-11 rounded-lg"
 				alt={
-					properties.user === undefined
+					props.user === undefined
 						? "Generic avatar"
-						: `${properties.user.display_name}'s profile avatar`
+						: `${props.user.display_name}'s profile avatar`
 				}
 			/>
 		</a>

@@ -11,19 +11,17 @@ const relativeTime = new Intl.RelativeTimeFormat(["en-US", "en"], {
 const getDaysPassedSince = (date: string) =>
 	Math.ceil((Date.parse(date) - Date.now()) / 1000 / 60 / 60 / 24);
 
-const Tag: ParentComponent = (properties) => (
+const Tag: ParentComponent = (props) => (
 	<div class="gap-1 rounded-lg bg-neutral-100 py-1 px-2 text-neutral-600 first-letter:capitalize">
-		{properties.children}
+		{props.children}
 	</div>
 );
 
 export const Release: Component<{
 	release: Awaited<ReturnType<typeof getArtistsReleases>>[number];
-}> = (properties) => {
+}> = (props) => {
 	const relativeReleaseDateCopy = createMemo(() => {
-		const relativeNumberOfDays = getDaysPassedSince(
-			properties.release.release_date,
-		);
+		const relativeNumberOfDays = getDaysPassedSince(props.release.release_date);
 
 		const relativeTimeSinceRelease = relativeTime.format(
 			relativeNumberOfDays,
@@ -44,39 +42,35 @@ export const Release: Component<{
 	return (
 		<div class="flex gap-7">
 			<a
-				href={properties.release.external_urls.spotify}
+				href={props.release.external_urls.spotify}
 				class="relative  h-32 w-32 shrink-0 rounded-lg md:h-36 md:w-36"
 			>
 				<img
-					src={properties.release.images.at(0)?.url}
-					alt={`Cover art for "${
-						properties.release.name
-					}" by ${properties.release.artists
+					src={props.release.images.at(0)?.url}
+					alt={`Cover art for "${props.release.name}" by ${props.release.artists
 						.map(({ name }) => name)
 						.join(", ")}`}
 					class="rounded-lg"
 				/>
 				<div
 					style={{
-						"background-image": `url('${
-							properties.release.images.at(0)!.url
-						}')`,
+						"background-image": `url('${props.release.images.at(0)!.url}')`,
 					}}
 					class="absolute bottom-0 -z-10 h-full w-full origin-bottom scale-[.8] bg-contain blur-md"
 				/>
 			</a>
 			<div class="flex min-w-0 flex-col gap-1">
 				<h1 class="overflow-hidden text-ellipsis whitespace-nowrap text-2xl">
-					<a href={properties.release.external_urls.spotify} class="">
-						{properties.release.name}
+					<a href={props.release.external_urls.spotify} class="">
+						{props.release.name}
 					</a>
 				</h1>
 				<h2 class="overflow-hidden text-ellipsis whitespace-nowrap text-xl">
-					<For each={properties.release.artists}>
+					<For each={props.release.artists}>
 						{(artist) => (
 							<>
 								<a href={artist.external_urls.spotify}>{artist.name}</a>
-								<Show when={artist !== properties.release.artists.at(-1)}>
+								<Show when={artist !== props.release.artists.at(-1)}>
 									,&nbsp;
 								</Show>
 							</>
@@ -85,7 +79,7 @@ export const Release: Component<{
 				</h2>
 				<div class="mt-auto flex gap-2">
 					<Tag>{relativeReleaseDateCopy()}</Tag>
-					<Tag>{properties.release.album_type}</Tag>
+					<Tag>{props.release.album_type}</Tag>
 				</div>
 			</div>
 		</div>

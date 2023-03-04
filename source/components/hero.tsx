@@ -22,12 +22,12 @@ const humanizeNumber = (number: number) => {
 
 export const Hero: Component<{
 	amount: number;
-}> = (properties) => (
+}> = (props) => (
 	<header class="mt-12">
 		<H1>
 			Holy guacamole, there are at least{" "}
 			<mark class="whitespace-nowrap rounded-2xl bg-teal-50 px-3 py-2 text-teal-600">
-				{humanizeNumber(properties.amount)}
+				{humanizeNumber(props.amount)}
 			</mark>{" "}
 			releases!
 		</H1>

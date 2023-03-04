@@ -30,6 +30,16 @@ module.exports = {
 				checkAllIndexAccess: true,
 			},
 		],
+		"unicorn/prevent-abbreviations": [
+			"error",
+			{
+				replacements: {
+					props: {
+						properties: false,
+					},
+				},
+			},
+		],
 		"@typescript-eslint/consistent-type-definitions": ["error", "type"],
 		"@typescript-eslint/consistent-type-imports": [
 			"error",

@@ -25,13 +25,10 @@ import type { Component } from "solid-js";
 
 const View: Component<{
 	releases: Awaited<ReturnType<typeof getArtistsReleases>>;
-}> = (properties) => {
+}> = (props) => {
 	const [page, setPage] = createSignal(1);
 	const pages = createMemo(() =>
-		properties.releases.slice(
-			0,
-			Math.min(page() * 40, properties.releases.length),
-		),
+		props.releases.slice(0, Math.min(page() * 40, props.releases.length)),
 	);
 
 	let pageEnd: HTMLDivElement;
@@ -42,7 +39,7 @@ const View: Component<{
 				return;
 			}
 
-			if (page() === Math.ceil(properties.releases.length / 40)) {
+			if (page() === Math.ceil(props.releases.length / 40)) {
 				observer.disconnect();
 
 				return;
@@ -66,7 +63,7 @@ const View: Component<{
 
 	return (
 		<>
-			<Hero amount={properties.releases.length} />
+			<Hero amount={props.releases.length} />
 			<section class="mt-24 mb-20 grid grid-cols-1 gap-12 xl:grid-cols-2">
 				<For each={pages()}>{(release) => <Release release={release} />}</For>
 				<div id="page-end-marker" ref={pageEnd!} />
